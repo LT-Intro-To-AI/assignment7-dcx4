@@ -17,7 +17,7 @@ print()
 print("\n\nTraining Voter Opinions")
 print()
 
-voter_opinion = [
+voter_opinion_data = [
     ([ .9, .6, .8, .3, .1], [1]),
     ([ .8, .8, .4, .6, .4], [1]),
     ([ .7, .2, .4, .6, .3], [1]),
@@ -27,8 +27,8 @@ voter_opinion = [
 ]
 
 von = NeuralNet(5,6,1)
-von.train(voter_opinion)
-print(von.test_with_expected(voter_opinion))
+von.train(voter_opinion_data)
+print(von.test_with_expected(voter_opinion_data))
 
 #Evaluate with the test data
 test_data = [
@@ -38,5 +38,7 @@ test_data = [
     ([.8,.3,.3,.8,.3]),
     ([.9,.8,.8,.3,.6])
 ]
-print()
-print(f"case 1: {von.evaluate(test_data)}")
+for t in range(len(test_data)):
+    print()
+    print(f"case 1: {test_data[t]} evalates to: {von.evaluate(test_data[t])}")
+    print()
